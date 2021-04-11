@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Link, Switch, withRouter } from 'react-router-dom';
 import Header from './header';
+import { connect } from 'react-redux';
+import * as actions from '../action';
 
 class station extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            text2: '',
+            station: '東京駅',
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
@@ -15,15 +17,13 @@ class station extends Component {
 
     handleChange(e) {
         this.setState({
-            text2: e.target.value
+            station: e.target.value
         })
     }
 
     handleClick() {
-        this.props.history.push({
-            pathname: "/genre",
-            state: { text2: this.state.text2 }
-        })
+        this.props.onClick(this.state.station);
+        this.props.history.push("/genre");
     }
 
     render() {
@@ -31,12 +31,23 @@ class station extends Component {
             <div>
                 <Header />
                 <p>駅名を入力してください</p>
-                <input type='text' value={this.state.text2} onChange={this.handleChange}></input>
-                <p>{this.state.text2}</p>
+                <input type='text' value={this.state.station} onChange={this.handleChange}></input>
                 <button onClick={this.handleClick}>次へ</button>
             </div>
         );
     }
 }
 
-export default withRouter(station)
+const mapStateToProps = (state) => ({
+    station: state.station.station,
+});
+
+function mapDispatchToProps(dispatch) {
+    return {
+        onClick(station) {
+            dispatch(actions.sendStation(station));
+        }
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(station));

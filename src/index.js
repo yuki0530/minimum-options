@@ -3,11 +3,21 @@ import ReactDOM from 'react-dom';
 import './scss/index.scss';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import reducer from './reducers';
+
+const store = createStore(reducer);
+
+// store確認用
+store.subscribe(() => {
+  console.log(store.getState());
+})
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 

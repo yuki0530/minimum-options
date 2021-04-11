@@ -10,7 +10,6 @@ class genre extends Component {
                 <p>
                     今の気分を選択してください
                 </p>
-                <p>{this.props.location.state.text}</p>
             </div>
         );
     }
