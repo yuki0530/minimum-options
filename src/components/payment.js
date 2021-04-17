@@ -4,12 +4,12 @@ import Header from './header';
 import { connect } from 'react-redux';
 import * as actions from '../action';
 
-class feeling extends Component {
+class payment extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            feeling: 'luxury',
+            payment: 'other',
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
@@ -17,13 +17,13 @@ class feeling extends Component {
 
     handleChange(e) {
         this.setState({
-            feeling: e.target.value
+            payment: e.target.value
         })
     }
 
     handleClick() {
-        this.props.onClick(this.state.feeling);
-        this.props.history.push("/seat");
+        this.props.onClick(this.state.payment);
+        this.props.history.push("/results");
     }
 
     render() {
@@ -31,17 +31,17 @@ class feeling extends Component {
             <div>
                 <Header />
                 <p>
-                    今の気分選択してください
+                    決済方法を選択してください
                 </p>
                 <label>
-                    高級店
-                    <input type="radio" value="luxury" onChange={this.handleChange} checked={this.state.feeling=="luxury"} />
+                    現金以外
+                    <input type="radio" value="other" onChange={this.handleChange} checked={this.state.payment=="other"} />
                 </label>
                 <label>
-                    洋食
-                    <input type="radio" value="popular" onChange={this.handleChange} checked={this.state.feeling=="popular"} />
+                    現金
+                    <input type="radio" value="cash" onChange={this.handleChange} checked={this.state.payment=="cash"} />
                 </label>
-                <p>{this.state.feeling}</p>
+                <p>{this.state.payment}</p>
                 <button onClick={this.handleClick}>画面遷移します</button>
             </div>
         );
@@ -49,15 +49,15 @@ class feeling extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    feeling: state.feeling.feeling,
+    payment: state.payment.payment,
 });
 
 function mapDispatchToProps(dispatch) {
     return {
-        onClick(feeling) {
-            dispatch(actions.sendFeeling(feeling));
+        onClick(payment) {
+            dispatch(actions.sendPayment(payment));
         }
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(feeling));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(payment));

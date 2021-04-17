@@ -7,6 +7,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
 
+// store作成
 const store = createStore(reducer);
 
 // store確認用

@@ -4,12 +4,12 @@ import Header from './header';
 import { connect } from 'react-redux';
 import * as actions from '../action';
 
-class feeling extends Component {
+class seat extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            feeling: 'luxury',
+            seat: 'private',
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
@@ -17,13 +17,13 @@ class feeling extends Component {
 
     handleChange(e) {
         this.setState({
-            feeling: e.target.value
+            seat: e.target.value
         })
     }
 
     handleClick() {
-        this.props.onClick(this.state.feeling);
-        this.props.history.push("/seat");
+        this.props.onClick(this.state.seat);
+        this.props.history.push("/payment");
     }
 
     render() {
@@ -31,17 +31,17 @@ class feeling extends Component {
             <div>
                 <Header />
                 <p>
-                    今の気分選択してください
+                    座席を選択してください
                 </p>
                 <label>
-                    高級店
-                    <input type="radio" value="luxury" onChange={this.handleChange} checked={this.state.feeling=="luxury"} />
+                    個室あり
+                    <input type="radio" value="private" onChange={this.handleChange} checked={this.state.seat=="private"} />
                 </label>
                 <label>
-                    洋食
-                    <input type="radio" value="popular" onChange={this.handleChange} checked={this.state.feeling=="popular"} />
+                    個室なし
+                    <input type="radio" value="table" onChange={this.handleChange} checked={this.state.seat=="table"} />
                 </label>
-                <p>{this.state.feeling}</p>
+                <p>{this.state.seat}</p>
                 <button onClick={this.handleClick}>画面遷移します</button>
             </div>
         );
@@ -49,15 +49,15 @@ class feeling extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    feeling: state.feeling.feeling,
+    seat: state.seat.seat,
 });
 
 function mapDispatchToProps(dispatch) {
     return {
-        onClick(feeling) {
-            dispatch(actions.sendFeeling(feeling));
+        onClick(seat) {
+            dispatch(actions.sendSeat(seat));
         }
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(feeling));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(seat));
