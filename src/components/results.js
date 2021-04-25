@@ -34,6 +34,15 @@ class results extends Component {
             });
     }
 
+    // 別のAPIでテスト、取得できた
+    // handleClick(event) {
+    //     fetch('https://jsonplaceholder.typicode.com/users')
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             console.log(data);
+    //         });
+    // }
+
     render() {
         return(
             <div>
