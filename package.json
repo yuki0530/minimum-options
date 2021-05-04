@@ -1,7 +1,8 @@
 {
   "name": "minimum-options",
   "engines": {
-    "node": "12.16.2"
+    "node": "*",
+    "npm": "*"
   },
   "version": "0.1.0",
   "private": true,
