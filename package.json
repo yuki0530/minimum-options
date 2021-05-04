@@ -1,9 +1,5 @@
 {
   "name": "minimum-options",
-  "engines": {
-    "node": "*",
-    "npm": "*"
-  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
