@@ -21,7 +21,7 @@ class results extends Component {
 
     handleClick(event) {
         fetch('https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=c9f39a96973f5b38&large_area=Z011&format=json', {
-            mode: 'cors',
+            mode: 'no-cors',
             headers: {
                 'Access-Control-Allow-Origin': '*',
             },
