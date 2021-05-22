@@ -38,7 +38,7 @@ class feeling extends Component {
                     <input type="radio" value="luxury" onChange={this.handleChange} checked={this.state.feeling=="luxury"} />
                 </label>
                 <label>
-                    洋食
+                    大衆店
                     <input type="radio" value="popular" onChange={this.handleChange} checked={this.state.feeling=="popular"} />
                 </label>
                 <p>{this.state.feeling}</p>

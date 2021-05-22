@@ -19,15 +19,23 @@ class results extends Component {
     //         })
     // }
 
+    // handleClick(event) {
+    //     fetch('https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=c9f39a96973f5b38&large_area=Z011&format=json', {
+    //         mode: 'cors',
+    //         headers: {
+    //             // 'Content-Type': 'application/json',
+    //             // 'X-Requested-With': 'XMLHttpRequest',
+    //             'Access-Control-Allow-Origin': '*',
+    //         },
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             console.log(data);
+    //         });
+    // }
+
     handleClick(event) {
-        fetch('https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=c9f39a96973f5b38&large_area=Z011&format=json', {
-            mode: 'cors',
-            headers: {
-                // 'Content-Type': 'application/json',
-                // 'X-Requested-With': 'XMLHttpRequest',
-                'Access-Control-Allow-Origin': '*',
-            },
-        })
+        fetch('https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=c9f39a96973f5b38&large_area=Z011&format=json')
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -50,7 +58,7 @@ class results extends Component {
                 <p>
                     検索結果画面
                 </p>
-                <button onClick={this.handleClick}>APIのテスト</button>
+                <button onClick={this.handleClick}>ホットペッパー!!!</button>
             </div>
         )
     }
