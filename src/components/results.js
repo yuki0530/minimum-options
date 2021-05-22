@@ -1,4 +1,3 @@
-// import axios from 'axios';
 import React, { Component } from 'react';
 import Header from './header';
 
@@ -6,18 +5,7 @@ class results extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            
-        };
     }
-
-    // componentDidMount() {
-    //     axios.get(`https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=c9f39a96973f5b38&large_area=Z011&format=json`)
-    //         .then(res => {
-    //             const results = res.data;
-    //             this.setState({ results });
-    //         })
-    // }
 
     handleClick(event) {
         fetch('https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=c9f39a96973f5b38&large_area=Z011&format=json', {
@@ -31,15 +19,6 @@ class results extends Component {
                 console.log(data);
             });
     }
-
-    // 別のAPIでテスト、取得できた
-    // handleClick(event) {
-    //     fetch('https://jsonplaceholder.typicode.com/users')
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             console.log(data);
-    //         });
-    // }
 
     render() {
         return(
