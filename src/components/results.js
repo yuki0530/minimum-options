@@ -9,10 +9,13 @@ class results extends Component {
 
     handleClick(event) {
         fetch('https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=c9f39a96973f5b38&large_area=Z011&format=json', {
-            mode: 'no-cors',
+            method: 'POST',
+            mode: 'cors',
             headers: {
                 'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json'
             },
+            body: JSON.stringify(data)
         })
         .then(response => response.json())
         .then(data => {
