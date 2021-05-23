@@ -14,14 +14,12 @@ class results extends Component {
                 'Access-Control-Allow-Origin': '*',
             },
         })
-        .then(response => {
-            response.json();
-        })
+        .then(response => response.json())
         .then(data => {
-            console.log(data);
+            console.log('Success!:', data);
         })
         .catch((error) => {
-            console.error('Error!!!:', error);
+            console.error('Error!:', error);
         });
     }
 
