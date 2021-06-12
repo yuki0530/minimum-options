@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link, Switch, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Header from './header';
 import { connect } from 'react-redux';
 import * as actions from '../action';
@@ -9,7 +9,7 @@ class genre extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            genre: 'japanese',
+            genre: 'G004',
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
@@ -23,7 +23,7 @@ class genre extends Component {
 
     handleClick() {
         this.props.onClick(this.state.genre);
-        this.props.history.push("/feeling");
+        this.props.history.push("/seat");
     }
 
     render() {
@@ -35,23 +35,32 @@ class genre extends Component {
                 </p>
                 <label>
                     和食
-                    <input type="radio" value="japanese" onChange={this.handleChange} checked={this.state.genre=="japanese"} />
+                    <input type="radio" value="G004" onChange={this.handleChange} checked={this.state.genre=='G004'} />
                 </label>
                 <label>
                     洋食
-                    <input type="radio" value="western" onChange={this.handleChange} checked={this.state.genre=="western"} />
+                    <input type="radio" value="G005" onChange={this.handleChange} checked={this.state.genre=='G005'} />
                 </label>
-                <p>{this.state.genre}</p>
+                <label>
+                    中華
+                    <input type="radio" value="G007" onChange={this.handleChange} checked={this.state.genre=='G007'} />
+                </label>
+                <label>
+                    焼肉
+                    <input type="radio" value="G008" onChange={this.handleChange} checked={this.state.genre=='G008'} />
+                </label>
                 <button onClick={this.handleClick}>画面遷移します</button>
             </div>
         );
     }
 }
 
+// propsにstateの値を詰め込む（取得する）
 const mapStateToProps = (state) => ({
     genre: state.genre.genre,
 });
 
+// actionをdispatchする（更新する）
 function mapDispatchToProps(dispatch) {
     return {
         onClick(genre) {

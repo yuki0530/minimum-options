@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './header';
+import { connect } from 'react-redux';
 import ResultTable from './ResultTable';
 
 class results extends Component {
@@ -118,6 +119,7 @@ class results extends Component {
     }
 
     // componentDidMountでAPIを呼び出す？
+    // this.props.stationなどをURLに組み込む？
     handleClick(event) {
         fetch('https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=c9f39a96973f5b38&large_area=Z011&format=json', {
             mode: 'no-cors',
@@ -139,11 +141,21 @@ class results extends Component {
             <>
                 <Header />
                 <ResultTable api={this.state.api} />
-                {/* <button onClick={this.handleClick}>ホットペッパー!!!</button> */}
-                <p>{this.state.payment}</p>
+                <p>駅名：{this.props.station}</p>
+                <p>ジャンル：{this.props.genre}</p>
+                <p>席：{this.props.seat}</p>
+                <p>支払い：{this.props.payment}</p>
             </>
         )
     }
 }
 
-export default results;
+// propsにstateの値を詰め込む（取得する）
+const mapStateToProps = (state) => ({
+    station: state.station.station,
+    genre: state.genre.genre,
+    seat: state.seat.seat,
+    payment: state.payment.payment
+})
+
+export default connect(mapStateToProps)(results);

@@ -1,5 +1,3 @@
-import payment from "./components/payment";
-
 export const SEND_STATION = 'SEND_STATION';
 export const SEND_GENRE = 'SEND_GENRE';
 export const SEND_FEELING = 'SEND_FEELING';
@@ -14,11 +12,6 @@ export const sendStation = station => ({
 export const sendGenre = genre => ({
     type: SEND_GENRE,
     genre,
-})
-
-export const sendFeeling = feeling => ({
-    type: SEND_FEELING,
-    feeling,
 })
 
 export const sendSeat = seat => ({

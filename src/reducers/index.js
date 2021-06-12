@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 import station from './stationreducer';
 import genre from './genrereducer';
-import feeling from './feelingreducer';
 import seat from './seatreducer';
 import payment from './paymentreducer';
 
@@ -9,7 +8,6 @@ import payment from './paymentreducer';
 const reducer = combineReducers({
   station,
   genre,
-  feeling,
   seat,
   payment
 });

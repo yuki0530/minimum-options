@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import '../scss/App.scss';
 import station from './station';
 import genre from './genre';
-import feeling from './feeling';
 import seat from './seat';
 import payment from './payment';
 import results from './results';
@@ -16,7 +15,6 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={station} />
           <Route path="/genre" component={genre} />
-          <Route path="/feeling" component={feeling} />
           <Route path="/seat" component={seat} />
           <Route path="/payment" component={payment} />
           <Route path="/results" component={results} />

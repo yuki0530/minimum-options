@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link, Switch, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Header from './header';
 import { connect } from 'react-redux';
 import * as actions from '../action';
@@ -38,10 +38,12 @@ class station extends Component {
     }
 }
 
+// propsにstateの値を詰め込む（取得する）
 const mapStateToProps = (state) => ({
     station: state.station.station,
 });
 
+// actionをdispatchする（更新する）
 function mapDispatchToProps(dispatch) {
     return {
         onClick(station) {
