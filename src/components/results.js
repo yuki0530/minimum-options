@@ -119,14 +119,26 @@ class results extends Component {
     }
 
     // componentDidMountでAPIを呼び出す？
+    // handleClick(event) {
+    //     fetch('https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=c9f39a96973f5b38&large_area=Z011&format=json', {
+    //         mode: 'no-cors',
+    //         headers: {
+    //             'Access-Control-Allow-Origin': '*',
+    //         },
+    //     })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         console.log('Success!:', data);
+    //     })
+    //     .catch((error) => {
+    //         console.error('Error!:', error);
+    //     });
+    // }
+
+    // ここでAPIを呼ぶ？
     // this.props.stationなどをURLに組み込む？
-    handleClick(event) {
-        fetch('https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=c9f39a96973f5b38&large_area=Z011&format=json', {
-            mode: 'no-cors',
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-            },
-        })
+    componentDidMount() {
+        fetch('https://jsonplaceholder.typicode.com/users')
         .then(response => response.json())
         .then(data => {
             console.log('Success!:', data);
@@ -145,6 +157,8 @@ class results extends Component {
                 <p>ジャンル：{this.props.genre}</p>
                 <p>席：{this.props.seat}</p>
                 <p>支払い：{this.props.payment}</p>
+                {/* urlはこんな感じ？ */}
+                <a href={"http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=c9f39a96973f5b38&count=1&format=json&keyword="+this.props.station} target="_blank">test</a>
             </>
         )
     }
@@ -157,5 +171,11 @@ const mapStateToProps = (state) => ({
     seat: state.seat.seat,
     payment: state.payment.payment
 })
+
+// 駅名変換どうする？UTF-8に変換する？
+// const uri = 'http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=c9f39a96973f5b38&count=1&format=json&keyword=横浜駅&private_room=1&card=1&genre=G008';
+// const encoded = encodeURI(uri);
+// console.log(uri);
+// console.log(encoded);
 
 export default connect(mapStateToProps)(results);
