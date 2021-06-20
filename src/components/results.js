@@ -9,33 +9,18 @@ class results extends Component {
         this.state = {
             apis:[]
         }
+        this.handleClick = this.handleClick.bind(this)
     }
 
-    // componentDidMountでAPIを呼び出す？
-    // handleClick(event) {
-    //     fetch('https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=c9f39a96973f5b38&large_area=Z011&format=json', {
-    //         mode: 'no-cors',
-    //         headers: {
-    //             'Access-Control-Allow-Origin': '*',
-    //         },
-    //     })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         console.log('Success!:', data);
-    //     })
-    //     .catch((error) => {
-    //         console.error('Error!:', error);
-    //     });
-    // }
+    handleClick() {
+        this.props.history.push("/");
+    }
 
-    // ここでAPIを呼ぶ？
+    // API呼び出し
     componentDidMount() {
-        // fetch('https://jsonplaceholder.typicode.com/users')
-        fetch('http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=c9f39a96973f5b38&count=3&format=json&keyword=横浜駅')
+        fetch(`http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=c9f39a96973f5b38&count=3&format=json&keyword=${this.props.station}&private_room=${this.props.seat}&card=${this.props.payment}&genre=${this.props.genre}`)
         .then(response => response.json())
         .then(data => {
-            // console.log('Success!:', data);
-            // console.log(data.results.shop);
             this.setState({
                 apis: data.results.shop
             })
@@ -48,24 +33,27 @@ class results extends Component {
     render() {
         const apiItems = this.state.apis.map((api, index) => {
             return (
-                <>
-                    <p key={index}>{api.name}</p>
-                    <p key={index}>{api.urls.pc}</p>
-                    <p key={index}>{api.access}</p>
-                    <p key={index}>{api.private_room}</p>
-                    <p key={index}>{api.card}</p>
-                    <p key={index}>{api.genre.name}</p>
-                    <p key={index}>{api.genre.catch}</p>
-                    {/* <img key={index} src={api.genre.photo.mobile.s} alt="" /> */}
-                    <br />
-                </>
+                <div key={index} className={'results-item'}>
+                    <a href={api.urls.pc} target="blank">
+                        <p className={'results-item__text'}>{api.name}</p>
+                        <p className={'results-item__text'}>アクセス：{api.access}</p>
+                        <p className={'results-item__text'}>個室{api.private_room}</p>
+                        <p className={'results-item__text'}>クレジットカード：{api.card}</p>
+                        <p className={'results-item__text'}>ジャンル：{api.genre.name}</p>
+                    </a>
+                </div>
             )
         })
 
         return(
             <>
                 <Header />
-                <div>{apiItems}</div>
+                <div className={'results'}>
+                    <div className={'results-items'}>
+                        {this.state.apis[0] ? apiItems : <p>申し訳ありません、検索結果はありません</p>}
+                    </div>
+                    <button className={'results-button'} onClick={this.handleClick}>やり直す</button>
+                </div>
             </>
         )
     }

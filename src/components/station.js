@@ -28,12 +28,17 @@ class station extends Component {
 
     render() {
         return (
-            <div>
+            <>
                 <Header />
-                <p>駅名を入力してください</p>
-                <input type='text' value={this.state.station} onChange={this.handleChange}></input>
-                <button onClick={this.handleClick}>次へ</button>
-            </div>
+                <div className={'search'}>
+                    <p className={'search-text'}>
+                        地名などのキーワードを入力してください。<br />
+                        半角スペース区切りで複数入力できます。
+                    </p>
+                    <input className={'search-textBox'} type='text' value={this.state.station} onChange={this.handleChange}></input>
+                    <button className={'search-button'} onClick={this.handleClick}>次へ</button>
+                </div>
+            </>
         );
     }
 }

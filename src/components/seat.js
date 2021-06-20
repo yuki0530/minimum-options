@@ -28,21 +28,21 @@ class seat extends Component {
 
     render() {
         return (
-            <div>
+            <>
                 <Header />
-                <p>
-                    座席を選択してください
-                </p>
-                <label>
-                    個室あり
-                    <input type="radio" value="1" onChange={this.handleChange} checked={this.state.seat=='1'} />
-                </label>
-                <label>
-                    個室なし
-                    <input type="radio" value="0" onChange={this.handleChange} checked={this.state.seat=='0'} />
-                </label>
-                <button onClick={this.handleClick}>画面遷移します</button>
-            </div>
+                <div className={'search'}>
+                    <p className={'search-text'}>
+                        座席を選択してください
+                    </p>
+                    <div className={'search-radioBox'}>
+                        <input className={'search-radio'} id="yes" type="radio" value="1" onChange={this.handleChange} checked={this.state.seat==='1'} />
+                        <label for="yes">個室あり</label>
+                        <input className={'search-radio'} id="no" type="radio" value="0" onChange={this.handleChange} checked={this.state.seat==='0'} />
+                        <label for="no">個室なし</label>
+                    </div>
+                    <button className={'search-button'} onClick={this.handleClick}>画面遷移します</button>
+                </div>
+            </>
         );
     }
 }

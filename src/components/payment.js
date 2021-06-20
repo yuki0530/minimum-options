@@ -28,21 +28,21 @@ class payment extends Component {
 
     render() {
         return (
-            <div>
+            <>
                 <Header />
-                <p>
-                    決済方法を選択してください
-                </p>
-                <label>
-                    カードOK
-                    <input type="radio" value="1" onChange={this.handleChange} checked={this.state.payment=='1'} />
-                </label>
-                <label>
-                    カードNG
-                    <input type="radio" value="0" onChange={this.handleChange} checked={this.state.payment=='0'} />
-                </label>
-                <button onClick={this.handleClick}>画面遷移します</button>
-            </div>
+                <div className={'search'}>
+                    <p className={'search-text'}>
+                        決済方法を選択してください
+                    </p>
+                    <div className={'search-radioBox'}>
+                        <input className={'search-radio'} id="ok" type="radio" value="1" onChange={this.handleChange} checked={this.state.payment==='1'} />
+                        <label for="ok">カードOK</label>
+                        <input className={'search-radio'} id="ng" type="radio" value="0" onChange={this.handleChange} checked={this.state.payment==='0'} />
+                        <label for="ng">カードNG</label>
+                    </div>
+                    <button className={'search-button'} onClick={this.handleClick}>画面遷移します</button>
+                </div>
+            </>
         );
     }
 }

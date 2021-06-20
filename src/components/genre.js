@@ -28,29 +28,25 @@ class genre extends Component {
 
     render() {
         return (
-            <div>
+            <>
                 <Header />
-                <p>
-                    料理のジャンルを選択してください
-                </p>
-                <label>
-                    和食
-                    <input type="radio" value="G004" onChange={this.handleChange} checked={this.state.genre=='G004'} />
-                </label>
-                <label>
-                    洋食
-                    <input type="radio" value="G005" onChange={this.handleChange} checked={this.state.genre=='G005'} />
-                </label>
-                <label>
-                    中華
-                    <input type="radio" value="G007" onChange={this.handleChange} checked={this.state.genre=='G007'} />
-                </label>
-                <label>
-                    焼肉
-                    <input type="radio" value="G008" onChange={this.handleChange} checked={this.state.genre=='G008'} />
-                </label>
-                <button onClick={this.handleClick}>画面遷移します</button>
-            </div>
+                <div className={'search'}>
+                    <p className={'search-text'}>
+                        料理のジャンルを選択してください
+                    </p>
+                    <div className={'search-radioBox'}>
+                        <input className={'search-radio'} id="japanese" type="radio" value="G004" onChange={this.handleChange} checked={this.state.genre==='G004'} />
+                        <label for="japanese">和食</label>
+                        <input className={'search-radio'} id="western" type="radio" value="G005" onChange={this.handleChange} checked={this.state.genre==='G005'} />
+                        <label for="western">洋食</label>
+                        <input className={'search-radio'} id="chinese" type="radio" value="G007" onChange={this.handleChange} checked={this.state.genre==='G007'} />
+                        <label for="chinese">中華</label>
+                        <input className={'search-radio'} id="meet" type="radio" value="G008" onChange={this.handleChange} checked={this.state.genre==='G008'} />
+                        <label for="meet">焼肉</label>
+                    </div>
+                    <button className={'search-button'} onClick={this.handleClick}>画面遷移します</button>
+                </div>
+            </>
         );
     }
 }

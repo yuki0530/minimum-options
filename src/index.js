@@ -11,9 +11,9 @@ import reducer from './reducers/index';
 const store = createStore(reducer);
 
 // store確認用
-store.subscribe(() => {
-  console.log(store.getState());
-})
+// store.subscribe(() => {
+//   console.log(store.getState());
+// })
 
 ReactDOM.render(
   <Provider store={store}>

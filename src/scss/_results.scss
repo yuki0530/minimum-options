@@ -1,0 +1,44 @@
+.results {
+    width: 50%;
+    margin: 50px auto 0;
+    text-align: center;
+    @include mq(sp) {
+        width: 90%;
+        font-size: 20px;
+    }
+
+    &-item {
+        color: $black;
+        background-color: $white;
+        border: 1px solid $black;
+        margin-bottom: 30px;
+        display: inline-block;
+        width: 100%;
+        transition: .4s;
+        padding: 10px;
+        &:hover {
+            background: $black;
+            color: $orange;
+        }
+        &__text {
+            margin-top: 10px;
+        }
+    }
+
+    &-button {
+        margin: 50px 0;
+        display: inline-block;
+        padding: 0.3em 1em;
+        text-decoration: none;
+        color: $black;
+        border: solid 1px $black;
+        border-radius: 3px;
+        transition: .4s;
+        background: $white;
+        width: 180px;
+        &:hover {
+            background: $black;
+            color: $orange;
+        }
+    }
+}
